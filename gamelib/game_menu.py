@@ -1,6 +1,7 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 
+from cocos.scenes.transitions import FadeTransition
 import pyglet
 
 from pgu.gui.basic import Color
@@ -12,6 +13,9 @@ from cocos.sprite import Sprite
 from cocos.layer.base_layers import MultiplexLayer, Layer
 
 import intro_scene
+#import sounds
+#from sfx import Sfx
+
 
 class BrandedMenu(Menu):
     """Branded menus for the game -- all menus inherit from here"""
@@ -44,15 +48,17 @@ class MainMenu(BrandedMenu):
 
         items = []
         self.title="Wibble-Wobble"
+#        self.select_sound = Sfx('sfx/menu_change.wav')
         items.append(MenuItem('Play', self.on_new_game))
 #        items.append(MenuItem('Scores', self.on_score))
         items.append(MenuItem('Configure', self.on_configure))
         items.append(MenuItem('Quit', self.on_quit))
         self.create_menu(items, zoom_in(), zoom_out(), shake())
+#        sounds.set_music('music/Ambient_loop1.ogg')
 
     def on_new_game(self):
         #director.push(game_scene)
-        director.push(intro_scene.get_scene())
+        director.push(FadeTransition(intro_scene.get_scene(),duration = 0.4))
 
     def on_score(self):
         print "Aca mostramos los Scores"

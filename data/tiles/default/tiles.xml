@@ -1,0 +1,152 @@
+<resource>
+<image file="data/tiles/default/ground-cobble.png" id="i-ground-cobble" />
+ <image file="data/tiles/default/grass-too.png" id="i-ground-grass" />
+ <image file="data/tiles/default/ground-dirt.png" id="i-ground-dirt" />
+ <image file="data/tiles/default/ground-dark-dirt.png" id="i-ground-dark-dirt" />
+ <image file="data/tiles/default/water.png" id="i-water" />
+ <image file="data/tiles/default/cobble-wall-l.png" id="i-wall-l" />
+ <image file="data/tiles/default/cobble-wall-r.png" id="i-wall-r" />
+ <image file="data/tiles/default/cobble-wall-lr.png" id="i-wall-lr" />
+ <image file="data/tiles/default/cobble-wall-b.png" id="i-wall-b" />
+ <image file="data/tiles/default/cobble-wall-t.png" id="i-wall-t" />
+ <image file="data/tiles/default/cobble-wall-bl.png" id="i-wall-bl" />
+ <image file="data/tiles/default/cobble-wall-tl.png" id="i-wall-tl" />
+ <image file="data/tiles/default/cobble-wall-br.png" id="i-wall-br" />
+ <image file="data/tiles/default/cobble-wall-tr.png" id="i-wall-tr" />
+ <image file="data/tiles/default/cobble-wall-bt.png" id="i-wall-bt" />
+ <image file="data/tiles/default/cobble-wall-btl.png" id="i-wall-btl" />
+ <image file="data/tiles/default/cobble-wall-btr.png" id="i-wall-btr" />
+ <image file="data/tiles/default/cobble-wall-blr.png" id="i-wall-blr" />
+ <image file="data/tiles/default/cobble-wall-tlr.png" id="i-wall-tlr" />
+
+ <image file="data/tiles/default/water-grass-tl.png" id="i-water-grass-tl" />
+ <image file="data/tiles/default/water-grass-t.png" id="i-water-grass-t" />
+ <image file="data/tiles/default/water-grass-tr.png" id="i-water-grass-tr" />
+ <image file="data/tiles/default/water-grass-l.png" id="i-water-grass-l" />
+ <image file="data/tiles/default/water-grass-r.png" id="i-water-grass-r" />
+ <image file="data/tiles/default/water-grass-bl.png" id="i-water-grass-bl" />
+ <image file="data/tiles/default/water-grass-b.png" id="i-water-grass-b" />
+ <image file="data/tiles/default/water-grass-br.png" id="i-water-grass-br" />
+
+ <image file="data/tiles/default/roof.png" id="i-roof" />
+ <image file="data/tiles/default/stone-road.png" id="i-stone-road" />
+ <image file="data/tiles/default/sand-floor-1.png" id="i-sand-floor-1" />
+ <image file="data/tiles/default/sand-floor-2.png" id="i-sand-floor-2" />
+ <image file="data/tiles/default/sand-floor-3.png" id="i-sand-floor-3" />
+ <image file="data/tiles/default/roof-tl.png" id="i-roof-tl" />
+ <image file="data/tiles/default/roof-tr.png" id="i-roof-tr" />
+ <image file="data/tiles/default/sand-block-1.png" id="i-sand-block-1" />
+ <image file="data/tiles/default/sand-block-2.png" id="i-sand-block-2" />
+ <image file="data/tiles/default/roof-b.png" id="i-roof-b" />
+ <image file="data/tiles/default/roof-l.png" id="i-roof-l" />
+ <image file="data/tiles/default/roof-bl.png" id="i-roof-bl" />
+ <image file="data/tiles/default/roof-r.png" id="i-roof-r" />
+ <image file="data/tiles/default/roof-t.png" id="i-roof-t" />
+ <image file="data/tiles/default/roof-br.png" id="i-roof-br" />
+
+ <tileset>
+<tile id="stone-road">
+<image ref="i-stone-road" />
+</tile>
+<tile id="roof-t">
+<property name="impassable" type="bool" value="True" />
+<image ref="i-roof-t" />
+</tile>
+<tile id="roof-tl">
+<property name="good manners" type="bool" value="True" />
+<property name="bob" type="unicode" value="jesus" />
+<property name="is_cat" type="bool" value="False" />
+<property name="percent" type="float" value="0.5" />
+<property name="impassable" type="bool" value="True" />
+<image ref="i-roof-tl" />
+</tile>
+<tile id="roof-r">
+<property name="impassable" type="bool" value="True" />
+<image ref="i-roof-r" />
+</tile>
+<tile id="roof-tr">
+<property name="impassable" type="bool" value="True" />
+<image ref="i-roof-tr" />
+</tile>
+<tile id="roof-l">
+<property name="impassable" type="bool" value="True" />
+<image ref="i-roof-l" />
+</tile>
+<tile id="ground-grass">
+<property name="no_more" type="float" value="3.1444444443999999" />
+<image ref="i-ground-grass" />
+</tile>
+<tile id="roof-b">
+<property name="impassable" type="bool" value="True" />
+<image ref="i-roof-b" />
+</tile>
+<tile id="ground-dirt">
+<property name="impassable" type="bool" value="True" />
+<image ref="i-ground-dirt" />
+</tile>
+<tile id="sand-floor-1">
+<image ref="i-sand-floor-1" />
+</tile>
+<tile id="sand-floor-2">
+<image ref="i-sand-floor-2" />
+</tile>
+<tile id="sand-floor-3">
+<image ref="i-sand-floor-3" />
+</tile>
+<tile id="water-grass-bl">
+<image ref="i-water-grass-bl" />
+</tile>
+<tile id="water">
+<property name="impassable" type="bool" value="True" />
+<image ref="i-water" />
+</tile>
+<tile id="water-grass-br">
+<image ref="i-water-grass-br" />
+</tile>
+<tile id="sand-block-1">
+<property name="impassable" type="bool" value="True" />
+<image ref="i-sand-block-1" />
+</tile>
+<tile id="water-grass-r">
+<image ref="i-water-grass-r" />
+</tile>
+<tile id="sand-block-2">
+<property name="impassable" type="bool" value="True" />
+<image ref="i-sand-block-2" />
+</tile>
+<tile id="roof-bl">
+<property name="impassable" type="bool" value="True" />
+<image ref="i-roof-bl" />
+</tile>
+<tile id="ground-dark-dirt">
+<property name="impassable" type="bool" value="True" />
+<image ref="i-ground-dark-dirt" />
+</tile>
+<tile id="water-grass-t">
+<image ref="i-water-grass-t" />
+</tile>
+<tile id="roof-br">
+<property name="impassable" type="bool" value="True" />
+<image ref="i-roof-br" />
+</tile>
+<tile id="ground-cobble">
+<image ref="i-ground-cobble" />
+</tile>
+<tile id="roof">
+<property name="impassable" type="bool" value="True" />
+<image ref="i-roof" />
+</tile>
+<tile id="water-grass-tl">
+<image ref="i-water-grass-tl" />
+</tile>
+<tile id="water-grass-tr">
+<image ref="i-water-grass-tr" />
+</tile>
+<tile id="water-grass-b">
+<image ref="i-water-grass-b" />
+</tile>
+<tile id="water-grass-l">
+<image ref="i-water-grass-l" />
+</tile>
+</tileset>
+</resource>

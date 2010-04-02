@@ -3,6 +3,7 @@
 
 
 
+from cocos.scenes.transitions import FadeTransition
 from cocos.scene import Scene
 from cocos.layer.base_layers import Layer
 from cocos.sprite import Sprite
@@ -17,7 +18,7 @@ class IntroHandlerLayer(Layer):
         super(IntroHandlerLayer,self).__init__()
 
     def on_key_press(self, key, modifiers):
-        director.replace(game_scene.next_level())
+        director.replace(FadeTransition(game_scene.next_level(),duration = 0.4))
 
 class IntroScene(Scene):
     
