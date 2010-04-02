@@ -6,8 +6,28 @@ Feel free to put all your game code here, or in other modules in this "gamelib"
 package.
 '''
 
+#
+# cocos2d
+# http://cocos2d.org
+#
+# Particle Engine done by Phil Hassey
+# http://www.imitationpickles.org
+#
+
+import sys
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 import data
+import pyglet
+import game_menu
+from cocos.director import director
+
 
 def main():
-    print "Hello from your game's main()"
-    print data.load('sample.txt').read()
+    pyglet.font.add_directory(data.filepath('fonts'))
+    pyglet.resource.path.append(data.filepath('.'))
+    pyglet.resource.reindex()
+    
+    director.init( resizable=True, width=800, height=600)
+    s = game_menu.get_scene()
+    director.run( s )
