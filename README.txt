@@ -19,7 +19,9 @@ You might need to install some of these before running the game:
 
 RUNNING THE GAME:
 
-On Windows or Mac OS X, locate the "run_game.py" file and double-click it.
+On Windows or Mac OS X, locate the "run_game.pya" file and double-click it.
+Note for Windows-64 bit users: you must install python 2.6-32 bits in order for
+pyglet to work.
 
 Othewise open a terminal / console and "cd" to the game directory and run:
 
