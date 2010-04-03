@@ -31,7 +31,7 @@ class ReaderScene(BilboardScene):
         label.content_width = 300
         self.label = label
         self.add(label,z=9999)
-        print self.text
+#        print self.text
         
 
 class StoryScene(ReaderScene):

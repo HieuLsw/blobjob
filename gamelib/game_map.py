@@ -78,7 +78,6 @@ class GameControlLayer(Layer):
             self.parent.wobble.x -= delta
 
             self.manager.set_focus(self.fx, self.fy)
-            print self.fx, " of ",  self.parent.px_width
             if(self.parent.px_width - self.fx <= 400):
                 director.replace(FadeTransition(game_scene.next_level(),duration=1))
                 self.playing = False
