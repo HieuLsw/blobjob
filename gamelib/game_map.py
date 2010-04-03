@@ -37,15 +37,18 @@ class GameMapScene(Scene):
         level = tiles.load(level_xml)
         print level
         mz = 0
+        mx = 0
         for id, layer in level.find(tiles.MapLayer):
             print layer
             self.manager.add(layer, z=layer.origin_z)
             mz = max(layer.origin_z, mz)
+            mx = max(layer.px_width, mx)
 
         self.level = level
+        self.px_width = mx
 
         self.add(GameControlLayer(self.manager, 60))
-        self.wobble = Wobble((6,6),level)
+        self.wobble = Wobble((5,7),level)
         self.add(self.wobble)
         self.manager.y = -25
         self.fg = GameDecoratorLayer()
@@ -65,11 +68,17 @@ class GameControlLayer(Layer):
         self.fx = self.manager.fx
         self.fy = self.manager.fy
         self.schedule(self.step)
-        print "control layer engaged"
+        self.playing = True
+
         
     def step(self,dt):
-        delta = self.speed*dt
-        self.fx += delta
-        self.parent.wobble.x -= delta
+        if(self.playing):
+            delta = self.speed*dt
+            self.fx += delta
+            self.parent.wobble.x -= delta
 
-        self.manager.set_focus(self.fx, self.fy)
+            self.manager.set_focus(self.fx, self.fy)
+            print self.fx, " of ",  self.parent.px_width
+            if(self.parent.px_width - self.fx <= 400):
+                director.replace(FadeTransition(game_scene.next_level(),duration=1))
+                self.playing = False

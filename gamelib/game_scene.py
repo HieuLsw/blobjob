@@ -62,7 +62,7 @@ class GameInputLayer(Layer):
 
 def reset_levels():
     global current_level
-    current_level = 3
+    current_level = 0
 
 def next_level():
     global current_level
