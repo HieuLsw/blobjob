@@ -49,6 +49,7 @@ class GameMapScene(Scene):
         self.manager.y = -25
         self.fg = GameDecoratorLayer()
         self.add(self.fg,z=999)
+        sounds.set_music('music/on_game.ogg')
 
 
     def char_die(self):

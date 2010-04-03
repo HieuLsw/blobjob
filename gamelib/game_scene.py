@@ -50,7 +50,6 @@ class GameInputLayer(Layer):
             director.push(FadeTransition(game_menu.pause_menu(),duration=0.3))
             return True
 
-
 def reset_levels():
     global current_level
     current_level = 0
