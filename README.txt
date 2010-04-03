@@ -1,8 +1,8 @@
-Your Game Title
-===============
+Blob Job
+========
 
 Entry in PyWeek #10  <http://www.pyweek.org/10/>
-Team: 
+Team:
 Members: Marco Pantalone, Lucas S. Caro, Pablo Arevalo, Giancarlo Caorlin, Carla Kna
 
 
@@ -31,7 +31,7 @@ starting. Please be kind and try a few more times until it starts.
 
 HOW TO PLAY THE GAME:
 
-Move the blob using the arrows and jum using space.
+Move the blob using the arrows and jump using space.
 
 Don't touch the spikes, don't get too close to the left edge.
 
