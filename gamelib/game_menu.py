@@ -158,14 +158,17 @@ class PauseMenu(BrandedMenu):
         l.append( MenuItem('Quit to Main Menu', self.on_main_menu))
         l.append( MenuItem('Exit', self.on_quit))
         self.create_menu(l)
+        sounds.stop_music()
 
     def on_continue(self):
+        sounds.play_music()
         director.pop()
 
     def on_main_menu(self):
         print "Thanks for playing!"
         director.pop()
         director.pop()
+        sounds.set_music('music/intro.ogg')
 
     def on_quit(self):
         print "Thanks for playing!"

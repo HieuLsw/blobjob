@@ -11,6 +11,7 @@ from cocos.layer import ScrollingManager
 from cocos.layer import Layer
 from wobble import  Wobble
 import data
+import sounds
 import pyglet
 import game_scene
 

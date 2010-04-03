@@ -9,6 +9,7 @@ from cocos.scene import *
 from cocos.scenes.transitions import *
 from cocos.director import director
 import cocos
+import sounds
 import game_menu
 from game_map import GameMapScene
 import sys
@@ -29,6 +30,7 @@ class GameOverScene(BilboardScene):
     def __init__(self):
         super(GameOverScene,self).__init__()
         self.add(GameOverControlLayer())
+        sounds.set_music('music/game_over.ogg')
         
 class GameOverControlLayer(Layer):
     is_event_handler = True
