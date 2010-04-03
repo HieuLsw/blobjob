@@ -15,6 +15,7 @@ from game_map import GameMapScene
 import sys
 
 current_level = 0
+max_level = 2
 
 class BilboardScene(Scene):
     def __init__(self):
@@ -31,6 +32,13 @@ class GameOverScene(BilboardScene):
         super(GameOverScene,self).__init__()
         self.add(GameOverControlLayer())
         sounds.set_music('music/game_over.ogg')
+
+class GameWinScene(BilboardScene):
+    image = 'bgs/ftw.jpg'
+    def __init__(self):
+        super(GameWinScene,self).__init__()
+        self.add(GameOverControlLayer())
+        sounds.set_music('music/ftw.ogg')
         
 class GameOverControlLayer(Layer):
     is_event_handler = True
@@ -54,20 +62,19 @@ class GameInputLayer(Layer):
 
 def reset_levels():
     global current_level
-    current_level = 2
+    current_level = 3
 
 def next_level():
     global current_level
-#    bg = Layer()
-#    bg.text = cocos.text.Label("Level "+str(current_level),x=200,y=250)
-#    bg.add(bg.text)
-    controls = GameInputLayer()
+    global max_level
 
-    current_level += 1
-    scene = GameMapScene('level'+str(current_level)+'.xml', speed=50, contents=controls)
-
-#    scene = Scene(bg,controls)
-    director.window.set_caption("Level "+str(current_level))
+    if(current_level <= max_level):
+        controls = GameInputLayer()
+        current_level += 1
+        scene = GameMapScene('level'+str(current_level)+'.xml', speed=50, contents=controls)
+        director.window.set_caption("Level "+str(current_level))
+    else:
+        scene = GameWinScene()
     return scene
 
 

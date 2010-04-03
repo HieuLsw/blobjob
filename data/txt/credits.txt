@@ -1,0 +1,12 @@
+Game Development Team:
+
+Idea: Guillermo Oursi, Damian Linossi, Lucas Caro
+Story: Marco Pantalone
+Programming: Lucas S. Caro
+2d Art: Pablo Arevalo, Giancarlo Caorlin, Carla Corcoba
+Level Design: Damian Linossi, Marco Pantalone, Giancarlo Caorlin, Pablo Arevalo
+Music and sfx: Pablo Arevalo
+
+
+Big thanks to everyone that made this game possible!
+

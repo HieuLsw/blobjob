@@ -81,7 +81,6 @@ class MainMenu(BrandedMenu):
 #        items.append(MenuItem('Options', self.on_configure))
         items.append(MenuItem('Quit', self.on_quit))
         self.create_menu(items, zoom_in(1.4), zoom_out(), shake())
-        sounds.set_music('music/intro.ogg')
 
     def on_new_game(self):
         #director.push(game_scene)
@@ -204,6 +203,22 @@ class BackgroundLayer(object):
     def back_batch(self):
         return self.batch
 
+class MainMenuScene(Scene):
+    def __init__(self):
+        super(MainMenuScene, self).__init__()
+
+    def on_enter(self):
+        sounds.set_music('music/intro.ogg')
+        super(MainMenuScene, self).on_enter()
+
+class PauseMenuScene(Scene):
+    def __init__(self):
+        super(PauseMenuScene, self).__init__()
+
+    def on_enter(self):
+        sounds.stop_music()
+        super(PauseMenuScene, self).on_enter()
+
 
 
 def get_scene():
@@ -215,11 +230,10 @@ def get_scene():
     bg_sprite.x = bg_sprite.width/2
     bg_sprite.y = bg_sprite.height/2
     back_layer.add(bg_sprite)
-    scene = Scene()
+    scene = MainMenuScene()
     scene.add(back_layer, z=0)
 #    menu_layer.image = 'bgs/menu_background.jpg'
     scene.add(menu_layer)
-    scene.music = "music/intro.ogg"
     return scene
 
 def pause_menu():
@@ -227,7 +241,7 @@ def pause_menu():
     texture = pyglet.image.Texture.create_for_size(
                     GL_TEXTURE_2D, w, h, GL_RGBA)
     texture.blit_into(pyglet.image.get_buffer_manager().get_color_buffer(), 0,0,0)
-    scene = Scene()
+    scene = PauseMenuScene()
     bg = Sprite(texture.get_region(0, 0, w, h))
     bg.x=w/2;
     bg.y=h/2;
