@@ -110,6 +110,8 @@ class Wobble(Layer):
         self.do(Repeat(Waves(vsin=False,amplitude=5)))
         self.schedule(self.step)
         self.grid_type(1, 1)
+        self.x = 0
+        self.y = 0
 
     def set_grid_position(self,position):
         x = self.grid_x_to_x(position[0])
@@ -163,21 +165,20 @@ class Wobble(Layer):
         return type
 
     def char_left_tile_type(self):
-#        if(self.facing == "up"):
-#            posY = self.char.y -25
-#        else:
-#            posY = self.char.y + 75
         posY = self.char.y
-        posX = self.char.x - 50
+        if(self.facing == "down"):
+            posY = self.char.y + 50
+            
+        posX = self.char.x - 40
         return self.grid_type_at_pixel(posX, posY)
 
     def char_right_tile_type(self):
-#        if(self.facing == "up"):
-#            posY = self.char.y -25
+        posY = self.char.y
+        if(self.facing == "down"):
+            posY = self.char.y + 50
 #        else:
 #            posY = self.char.y + 75
-        posY = self.char.y
-        posX = self.char.x + 50
+        posX = self.char.x + 40
         return self.grid_type_at_pixel(posX, posY)
 
     def char_ground_tile_type(self):
@@ -211,70 +212,72 @@ class Wobble(Layer):
     def step(self, dt):
         kb = self.keyboard
 
+
         if(self.status != 'death'):
-            if(self.status != 'jump'):
-                if(kb['LEFT']):
-                    left_tile_type = self.char_left_tile_type()
-                    if left_tile_type != 'wall':
-                        self.char.x -= self.move_speed * dt
-                        self.status = 'walk'
-                        self.set_animation()
-
-                elif(kb['RIGHT']):
-                    right_tile_type = self.char_right_tile_type()
-#                    print right_tile_type
-                    if right_tile_type != 'wall':
-                        self.char.x += self.move_speed * dt
-                        self.status = 'walk'
-                        self.set_animation()
-                else:
-                    self.status = "still"
-                    self.set_animation()
-
-                if(kb['SPACE']):
-                    self.status = 'jump'
-                    self.set_animation()
-                    if(self.facing == "down"):
-                        self.jump_down()
-                    else:
-                        self.jump_up()
-
-                elif(kb['UP']):
-                    self.status = 'jump'
-                    self.jump_up()
-                elif(kb['DOWN']):
-                    self.status = 'jump'
-                    self.jump_down()
-            else: #JUMPING
-                pass
-
             if self.char.x <= self.parent.manager.fx - 375:
                 self.die()
+                return
 
             my_tile = self.char_to_grid()
             my_tile_type = self.grid_type(my_tile[0],my_tile[1])
-    #        print "Ocupando un "+my_tile_type
             ground_tile_type = self.char_ground_tile_type()
-    #        print "PArado en un "+ground_tile_type
             if(ground_tile_type == "bad" or my_tile_type == "bad"):
                 self.die()
-            if(ground_tile_type == "air"):
+            elif(ground_tile_type == "air"):
                 if(self.facing == "up"):
                     direction = -1
                 else:
                     direction = 1
-                self.char.y += direction * 300 * dt
+                self.char.y += direction * 400 * dt
+            else: #ON WALL
+                if(self.status != 'jump'):
+                    if(kb['LEFT']):
+                        left_tile_type = self.char_left_tile_type()
+                        if left_tile_type != 'wall':
+                            self.char.x -= self.move_speed * dt
+                            self.status = 'walk'
+                            self.set_animation()
+
+                    elif(kb['RIGHT']):
+                        right_tile_type = self.char_right_tile_type()
+    #                    print right_tile_type
+                        if right_tile_type != 'wall':
+                            self.char.x += self.move_speed * dt
+                            self.status = 'walk'
+                            self.set_animation()
+                    else:
+                        self.status = "still"
+                        self.set_animation()
+
+                    if(kb['SPACE']):
+                        self.status = 'jump'
+                        self.set_animation()
+                        if(self.facing == "down"):
+                            self.jump_down()
+                        else:
+                            self.jump_up()
+
+                    elif(kb['UP']):
+                        self.status = 'jump'
+                        self.jump_up()
+                    elif(kb['DOWN']):
+                        self.status = 'jump'
+                        self.jump_down()
+                else: #JUMPING
+                    pass
         else: #dead
             pass
 
     def die(self):
-        self.status = 'death'
-        sounds.play("sfx/hurt.ogg")
-#        self.set_animation()
-        self.char.remove(self.sprite)
-        self.char.add(Sprite(pyglet.image.Animation.from_image_sequence(self.images['death'], 0.05, False)))
+        if self.status != "death":
+            self.status = 'death'
+            sounds.play("sfx/hurt.ogg")
+    #        self.set_animation()
 
-        self.char.do(JumpBy(height=150,jumps=3,duration=2) + CallFunc(self.parent.char_die))
+            self.char.remove(self.sprite)
+            self.char.add(Sprite(pyglet.image.Animation.from_image_sequence(self.images['death'], 0.05, False)))
+
+            self.char.do(JumpBy(height=150,jumps=3,duration=2) + CallFunc(self.parent.char_die))
         
 
     def jump_up(self):
