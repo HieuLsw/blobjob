@@ -26,8 +26,10 @@ from cocos.director import director
 def main():
     pyglet.font.add_directory(data.filepath('fonts'))
     pyglet.resource.path.append(data.filepath('.'))
+    pyglet.resource.path.append(data.filepath('maps'))
+    pyglet.resource.path.append(data.filepath('chars'))
     pyglet.resource.reindex()
     
-    director.init( resizable=True, width=800, height=600)
+    director.init(resizable=True, width=800, height=600, audio=None)
     s = game_menu.get_scene()
     director.run( s )

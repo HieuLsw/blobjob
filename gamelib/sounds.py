@@ -24,13 +24,16 @@ def set_music(name):
 
     music_player.next()
     music_player.queue(pyglet.resource.media(name, streaming=True))
-    music_player.play()
     # pyglet bug
     music_player.volume = music_player.volume
+    music_player.play()
     music_player.eos_action = 'loop'
 
 def music_volume(vol):
-    music_player.volume=vol
+    global music_player
+    if(vol):
+        music_player.volume = vol
+    return music_player.volume
 
 def queue_music(name):
     global current_music
@@ -69,9 +72,13 @@ def load(name, streaming=False):
 
 def play(name):
     load(name)
-    a = sounds[name].play().volume = sound_vol
+    a = sounds[name]
+    a.volume = sound_vol
+    a.play()
 
-def sound_volume( vol ):
+def sound_volume( vol = None ):
     global sound_vol
-    sound_vol = vol
+    if(vol):
+        sound_vol = vol
+    return sound_vol
 

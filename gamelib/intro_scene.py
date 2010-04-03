@@ -18,7 +18,7 @@ class IntroHandlerLayer(Layer):
         super(IntroHandlerLayer,self).__init__()
 
     def on_key_press(self, key, modifiers):
-        director.replace(FadeTransition(game_scene.next_level(),duration = 0.4))
+        director.replace(FadeTransition(game_scene.first_level(),duration = 0.4))
 
 class IntroScene(Scene):
     
