@@ -45,7 +45,7 @@ class GameMapScene(Scene):
         self.level = level
 
         self.add(GameControlLayer(self.manager, 60))
-        self.wobble = Wobble((5,3),level)
+        self.wobble = Wobble((6,6),level)
         self.add(self.wobble)
         self.manager.y = -25
         self.fg = GameDecoratorLayer()

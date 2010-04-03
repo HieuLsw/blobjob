@@ -275,19 +275,19 @@ class Wobble(Layer):
         self.char.remove(self.sprite)
         self.char.add(Sprite(pyglet.image.Animation.from_image_sequence(self.images['death'], 0.05, False)))
 
-        self.char.do(JumpBy(height=150,jumps=4,duration=2) + Delay(2) + CallFunc(self.parent.char_die))
+        self.char.do(JumpBy(height=150,jumps=3,duration=2) + Delay(2) + CallFunc(self.parent.char_die))
         
 
     def jump_up(self):
 #        self.char.do(jump_up(self.end_jump))
-        self.char.do(MoveTo((self.char.x,self.grid_y_to_y(self.char_jump_block()-2)),duration=0.1) + CallFunc(self.end_jump))
+        self.char.do(MoveTo((self.char.x,self.grid_y_to_y(self.char_jump_block()-2)),duration=0.2) + CallFunc(self.end_jump))
         self.facing = "down"
         sounds.play("sfx/jump.ogg")
 #        print self.char_to_grid()
 
     def jump_down(self):
 #        self.char.do(jump_down(self.end_jump))
-        self.char.do(MoveTo((self.char.x,self.grid_y_to_y(self.char_jump_block()+1)),duration=0.1) + CallFunc(self.end_jump))
+        self.char.do(MoveTo((self.char.x,self.grid_y_to_y(self.char_jump_block()+1)),duration=0.2) + CallFunc(self.end_jump))
         self.facing = "up"
         sounds.play("sfx/jump.ogg")
 #        print self.char_to_grid()

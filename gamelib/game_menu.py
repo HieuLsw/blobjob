@@ -20,6 +20,7 @@ from cocos.scene import Scene
 from cocos.sprite import Sprite
 from cocos.layer.base_layers import MultiplexLayer, Layer
 
+import reader_scene
 import intro_scene
 import sounds
 from sfx import Sfx
@@ -75,8 +76,9 @@ class MainMenu(BrandedMenu):
         self.title=""
         items.append(MenuItem('Play', self.on_new_game))
 #        items.append(MenuItem('Scores', self.on_score))
-        items.append(MenuItem('Credits', self.on_score))
-        items.append(MenuItem('Options', self.on_configure))
+        items.append(MenuItem('Story', self.on_story))
+        items.append(MenuItem('Credits', self.on_credits))
+#        items.append(MenuItem('Options', self.on_configure))
         items.append(MenuItem('Quit', self.on_quit))
         self.create_menu(items, zoom_in(1.4), zoom_out(), shake())
         sounds.set_music('music/intro.ogg')
@@ -84,6 +86,12 @@ class MainMenu(BrandedMenu):
     def on_new_game(self):
         #director.push(game_scene)
         director.push(FadeTransition(intro_scene.get_scene(),duration = 0.4))
+
+    def on_credits(self):
+        director.push(FadeTransition(reader_scene.CreditsScene(),duration = 0.4))
+        
+    def on_story(self):
+        director.push(FadeTransition(reader_scene.StoryScene(),duration = 0.4))
 
     def on_score(self):
         print "Aca mostramos los Scores"
