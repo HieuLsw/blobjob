@@ -2,12 +2,9 @@
 # and open the template in the editor.
 
 from cocos.layer.util_layers import ColorLayer
-from cocos.actions.interval_actions import FadeTo
 from cocos.text import Label
 from cocos.actions.grid3d_actions import Shaky3D
-from cocos.actions.interval_actions import MoveBy
-from direct.interval.MetaInterval import Sequence
-from cocos.actions.interval_actions import ScaleTo
+from cocos.actions.interval_actions import *
 from cocos.scenes.transitions import FadeTransition
 import pyglet
 from pyglet.gl import *
@@ -15,7 +12,7 @@ import sys
 
 from cocos.director import director
 from cocos.batch import BatchNode
-from cocos.menu import Menu, MenuItem, RIGHT,BOTTOM, zoom_in, zoom_out, EntryMenuItem, ImageMenuItem, MultipleMenuItem,shake
+from cocos.menu import Menu, MenuItem, RIGHT,BOTTOM, zoom_in, zoom_out, MultipleMenuItem,shake
 from cocos.scene import Scene
 from cocos.sprite import Sprite
 from cocos.layer.base_layers import MultiplexLayer, Layer
