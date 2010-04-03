@@ -48,8 +48,10 @@ class GameMapScene(Scene):
         self.px_width = mx
 
         self.add(GameControlLayer(self.manager, 80))
-        self.wobble = Wobble((5,6),level)
+        self.wobble = Wobble((5,7),level)
         self.add(self.wobble)
+        self.wobble.x=0
+        self.wobble.y=0
         self.manager.y = -25
         self.fg = GameDecoratorLayer()
         self.add(self.fg,z=999)

@@ -110,8 +110,6 @@ class Wobble(Layer):
         self.do(Repeat(Waves(vsin=False,amplitude=5)))
         self.schedule(self.step)
         self.grid_type(1, 1)
-        self.x = 0
-        self.y = 0
 
     def set_grid_position(self,position):
         x = self.grid_x_to_x(position[0])
