@@ -275,7 +275,7 @@ class Wobble(Layer):
         self.char.remove(self.sprite)
         self.char.add(Sprite(pyglet.image.Animation.from_image_sequence(self.images['death'], 0.05, False)))
 
-        self.char.do(JumpBy(height=150,jumps=3,duration=2) + Delay(2) + CallFunc(self.parent.char_die))
+        self.char.do(JumpBy(height=150,jumps=3,duration=2) + CallFunc(self.parent.char_die))
         
 
     def jump_up(self):
