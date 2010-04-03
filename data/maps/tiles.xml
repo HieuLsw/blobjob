@@ -1,0 +1,32 @@
+<resource><image file="block-02.png" id="i-block-02" />
+<image file="block-03.png" id="i-block-03" />
+<image file="block-04.png" id="i-block-04" />
+<image file="block-05.png" id="i-block-05" />
+<image file="block-06.png" id="i-block-06" />
+<image file="block-07.png" id="i-block-07" />
+<image file="block-08.png" id="i-block-08" />
+<image file="block-09.png" id="i-block-09" />
+<image file="block-10.png" id="i-block-10" />
+<image file="block-11.png" id="i-block-11" />
+<image file="block-12.png" id="i-block-12" />
+<image file="exit-1.png" id="i-exit-1" />
+<image file="exit-2.png" id="i-exit-2" />
+<image file="exit-3.png" id="i-exit-3" />
+<image file="exit-4.png" id="i-exit-4" />
+<tileset id="tiles"><tile id="block-02"><image ref="i-block-02" /></tile>
+<tile id="block-03"><image ref="i-block-03" /></tile>
+<tile id="block-04"><image ref="i-block-04" /></tile>
+<tile id="block-05"><image ref="i-block-05" /></tile>
+<tile id="block-06"><image ref="i-block-06" /></tile>
+<tile id="block-07"><image ref="i-block-07" /></tile>
+<tile id="block-08"><image ref="i-block-08" /></tile>
+<tile id="block-09"><image ref="i-block-09" /></tile>
+<tile id="block-10"><image ref="i-block-10" /></tile>
+<tile id="block-11"><image ref="i-block-11" /></tile>
+<tile id="block-12"><image ref="i-block-12" /></tile>
+<tile id="exit-1"><image ref="i-exit-1" /></tile>
+<tile id="exit-2"><image ref="i-exit-2" /></tile>
+<tile id="exit-3"><image ref="i-exit-3" /></tile>
+<tile id="exit-4"><image ref="i-exit-4" /></tile>
+</tileset>
+</resource>
