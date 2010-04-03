@@ -30,6 +30,7 @@ class Wobble(Layer):
         self.move_speed = 200
         self.status = "still"
         self.facing = "up"
+        self.can_jump = True
         
         self.keyboard = {
             'LEFT'  :   False,
@@ -247,8 +248,9 @@ class Wobble(Layer):
                         self.status = "still"
                         self.set_animation()
 
-                    if(kb['SPACE']):
+                    if(kb['SPACE'] and self.can_jump):
                         self.status = 'jump'
+                        self.can_jump = False
                         self.set_animation()
                         if(self.facing == "down"):
                             self.jump_down()
@@ -318,5 +320,6 @@ class Wobble(Layer):
             key == pyglet.window.key.LEFT or \
             key == pyglet.window.key.SPACE:
             self.keyboard[key_name] = False
+            self.can_jump = True
 #            key == pyglet.window.key.UP or \
 #            key == pyglet.window.key.DOWN or \

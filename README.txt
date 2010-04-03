@@ -2,7 +2,7 @@ Blob Job
 ========
 
 Entry in PyWeek #10  <http://www.pyweek.org/10/>
-Team:    Vaporsoft Games
+Team:    Vapoursoft Games
 Members: Marco Pantalone, Lucas S. Caro, Pablo Arevalo, Giancarlo Caorlin, Carla Kna
 
 
