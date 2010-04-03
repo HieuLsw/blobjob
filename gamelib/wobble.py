@@ -99,7 +99,8 @@ class Wobble(Layer):
         self.char = CocosNode()
         self.char.scale = 0.75
         self.set_grid_position(position)
-        
+        self.x = 0
+        self.y = 0
 
         self.sprite = None
         self.add(self.char)
@@ -115,7 +116,8 @@ class Wobble(Layer):
     def set_grid_position(self,position):
         x = self.grid_x_to_x(position[0])
         y = self.grid_y_to_y(position[1])
-        
+
+        print "iniciando en ",x,",",y
         self.char.x = x
         self.char.y = y
 
