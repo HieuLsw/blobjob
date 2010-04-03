@@ -196,7 +196,7 @@ class BackgroundLayer(object):
                 sprite.x = x
                 sprite.y = y
                 self.batch.add(sprite)
-                print "sprite agregado", self.batch
+#                print "sprite agregado", self.batch
     def back_batch(self):
         return self.batch
 

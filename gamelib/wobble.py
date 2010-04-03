@@ -24,7 +24,6 @@ def jump_down(callback=None):
 class Wobble(Layer):
     is_event_handler = True
     def __init__(self, position = (2,1), level = None):
-        print "wobble created"
         super(Wobble,self).__init__()
         self.level = level
         
@@ -94,7 +93,7 @@ class Wobble(Layer):
 #            'death': Sprite(pyglet.image.Animation.from_image_sequence(self.images['death'], 0.2, False)),
         }
 
-        print self.animations
+#        print self.animations
 #        self.sprite = Sprite(self.animations['still'])
         self.char = CocosNode()
         self.char.scale = 0.75
@@ -223,7 +222,7 @@ class Wobble(Layer):
 
                 elif(kb['RIGHT']):
                     right_tile_type = self.char_right_tile_type()
-                    print right_tile_type
+#                    print right_tile_type
                     if right_tile_type != 'wall':
                         self.char.x += self.move_speed * dt
                         self.status = 'walk'
@@ -307,16 +306,16 @@ class Wobble(Layer):
         key_name = pyglet.window.key.symbol_string (key)
         if key == pyglet.window.key.RIGHT or \
             key == pyglet.window.key.LEFT or \
-            key == pyglet.window.key.UP or \
-            key == pyglet.window.key.DOWN or \
             key == pyglet.window.key.SPACE:
             self.keyboard[key_name] = True
+#            key == pyglet.window.key.UP or \
+#            key == pyglet.window.key.DOWN or \
 
     def on_key_release(self, key, modifiers):
         key_name = pyglet.window.key.symbol_string (key)
         if key == pyglet.window.key.RIGHT or \
             key == pyglet.window.key.LEFT or \
-            key == pyglet.window.key.UP or \
-            key == pyglet.window.key.DOWN or \
             key == pyglet.window.key.SPACE:
             self.keyboard[key_name] = False
+#            key == pyglet.window.key.UP or \
+#            key == pyglet.window.key.DOWN or \

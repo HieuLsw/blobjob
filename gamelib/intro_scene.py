@@ -37,5 +37,5 @@ class IntroScene(Scene):
 def get_scene():
     scene = IntroScene()
 
-    print "Showing Game Tutorial"
+#    print "Showing Game Tutorial"
     return scene

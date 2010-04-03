@@ -12,7 +12,7 @@ class Sfx:
             print "Error loading " + sound
 
     def play(self):
-        print "Playing sound " + str(self.snd)
+#        print "Playing sound " + str(self.snd)
         try:
             sounds.play(self.snd)
         except Exception, inst:

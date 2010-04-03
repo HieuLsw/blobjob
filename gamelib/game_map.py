@@ -33,13 +33,13 @@ class GameMapScene(Scene):
 #        self.remove(self.manager)
         self.manager = ScrollingManager()
         self.add(self.manager)
-        print pyglet.resource.path
+#        print pyglet.resource.path
         level = tiles.load(level_xml)
-        print level
+#        print level
         mz = 0
         mx = 0
         for id, layer in level.find(tiles.MapLayer):
-            print layer
+#            print layer
             self.manager.add(layer, z=layer.origin_z)
             mz = max(layer.origin_z, mz)
             mx = max(layer.px_width, mx)
@@ -47,7 +47,7 @@ class GameMapScene(Scene):
         self.level = level
         self.px_width = mx
 
-        self.add(GameControlLayer(self.manager, 60))
+        self.add(GameControlLayer(self.manager, 80))
         self.wobble = Wobble((5,7),level)
         self.add(self.wobble)
         self.manager.y = -25
