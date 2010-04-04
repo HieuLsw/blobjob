@@ -69,7 +69,7 @@ add_files(data,os.walk('data'))
 data.extend(glob.glob('*.txt'))
 # define what is our source
 src = []
-add_files(src,os.walk('lib'))
+add_files(src,os.walk('gamelib'))
 src.extend(glob.glob('*.py'))
 
 # build the sdist target
