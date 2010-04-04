@@ -1,5 +1,8 @@
 import os
 
+from cocos.actions import Repeat
+from cocos.actions.grid3d_actions import *
+from cocos.actions.camera_actions import *
 from cocos.scenes.transitions import FadeTransition
 from cocos.sprite import Sprite
 from cocos.scenes.pause import PauseScene
@@ -56,8 +59,9 @@ class GameMapScene(Scene):
         self.fg = GameDecoratorLayer()
         self.add(self.fg,z=999)
         sounds.set_music('music/on_game.ogg')
-
-
+        #This line fixes the grid added by the MapLayer
+        self.manager.do(Repeat(Waves(waves=1,amplitude=0)))
+        
     def char_die(self):
         director.replace(FadeTransition(game_scene.GameOverScene(),duration=1))
 

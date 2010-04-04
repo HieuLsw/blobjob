@@ -1,0 +1,15 @@
+Planned features:
+
+	* Muchas vidas / reintentos / niveles mas cortos o resumeables
+	* Checkpoints / save 
+	* Bonuses
+	* Plataformas moviles
+	* Bolita en la plataforma
+	* Hacer el exe
+
+
+blob-job feedback:
+
+(08:04:03 PM) Darni: estaria bueno tener mas vidas/reintentos
+(08:04:17 PM) amenhotep: estaria bueno poder cambiar las teclas
+

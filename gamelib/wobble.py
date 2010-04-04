@@ -197,6 +197,8 @@ class Wobble(Layer):
                 self.char.remove(self.sprite)
             self.sprite = self.animations[name]
             self.char.add(self.sprite)
+            self.sprite.opacity = 230
+            self.sprite.color = (100,255,100)
             self.sprite.x = 0
             self.sprite.y = 0
          
