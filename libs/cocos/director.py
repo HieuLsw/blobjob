@@ -463,15 +463,17 @@ class Director(event.EventDispatcher):
         self.next_scene = scene
         self.scene_stack.append( self.scene )
 
-    def pop(self):
+    def pop(self, transition=None):
         """Pops out a scene from the queue. This scene will replace the running one.
            The running scene will be deleted. If there are no more scenes in the stack
            the execution is terminated.
         """
-        self.dispatch_event("on_pop")
+        self.dispatch_event("on_pop",transition)
 
-    def on_pop(self):
+    def on_pop(self, transition=None):
         self.next_scene = self.scene_stack.pop()
+        if(transition!=None):
+            self.next_scene = transition(self.next_scene)
 
     def replace(self, scene):
         """Replaces the running scene with a new one. The running scene is terminated.
@@ -495,8 +497,10 @@ class Director(event.EventDispatcher):
         old = self.scene
 
         self.scene = scene
+            
         self.scene.enable_handlers( True )
         scene.on_enter()
+        
 
         return old
 

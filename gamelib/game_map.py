@@ -60,7 +60,7 @@ class GameMapScene(Scene):
         self.add(self.fg,z=999)
         sounds.set_music('music/on_game.ogg')
         #This line fixes the grid added by the MapLayer
-        self.manager.do(Repeat(Waves(waves=1,amplitude=0)))
+        self.manager.do(Waves(waves=1,amplitude=0))
         
     def char_die(self):
         director.replace(FadeTransition(game_scene.GameOverScene(),duration=1))

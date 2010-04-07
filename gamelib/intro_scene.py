@@ -19,6 +19,9 @@ class IntroHandlerLayer(Layer):
 
     def on_key_press(self, key, modifiers):
         director.replace(FadeTransition(game_scene.first_level(),duration = 0.4))
+        
+    def on_mouse_press(self, x, y,  buttons, modifiers):
+        director.replace(FadeTransition(game_scene.first_level(),duration = 0.4))
 
 class IntroScene(Scene):
     

@@ -1,6 +1,9 @@
+import pyglet.window.key
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 
+from cocos.actions.interval_actions import Accelerate
+from cocos.actions.interval_actions import Delay
 from cocos.layer.util_layers import ColorLayer
 from cocos.text import Label
 from cocos.actions.grid3d_actions import Shaky3D
@@ -13,29 +16,26 @@ import sys
 from cocos.director import director
 from cocos.batch import BatchNode
 from cocos.menu import Menu, MenuItem, RIGHT,BOTTOM, zoom_in, zoom_out, MultipleMenuItem,shake
+from cocos.menu import verticalMenuLayout
 from cocos.scene import Scene
 from cocos.sprite import Sprite
 from cocos.layer.base_layers import MultiplexLayer, Layer
 
 import reader_scene
 import intro_scene
+from blob_transitions import *
+
 import sounds
 from sfx import Sfx
 #import cocos.audio
 
 
-def zoom_in(scale=1.5, duration=0.2):
-    '''Predefined action that scales to 1.5 factor in 0.2 seconds'''
-    d = duration
-    return ScaleTo( scale, duration=d ) + Shaky3D(duration=d/2, randrange=3)
-#    return ScaleTo( scale, duration=d ) + shake()
-
-def zoom_out(scale=1.0, duration=0.2):
-    '''Predefined action that scales to 1.0 factor in 0.2 seconds'''
-    d = duration
-    return ScaleTo( scale, duration=0.2 ) 
-
-
+class DisableEscapeKeyLayer(Layer):
+    is_event_handler = True
+    def on_key_press(self,key,modifiers):
+        print "Key " + str(key)
+        if(key == pyglet.window.key.ESCAPE ):
+            return True
 
 class BrandedMenu(Menu):
     """Branded menus for the game -- all menus inherit from here"""
@@ -63,6 +63,31 @@ class BrandedMenu(Menu):
         self.menu_halign = RIGHT
         self.select_sound = Sfx('sfx/menu_change.ogg')
 
+    def on_key_press(self,key,modifiers):
+        if(key == pyglet.window.key.ESCAPE ):
+            return True
+        super(BrandedMenu, self).on_key_press(key, modifiers)
+
+    def create_menu(self, items, selected_effect=None, unselected_effect=None,
+                    activated_effect=None, layout_strategy=verticalMenuLayout):
+
+        super(BrandedMenu, self).create_menu(items, selected_effect, unselected_effect, activated_effect, layout_strategy)
+
+        delay = 0.3
+        for i in items:
+            i.scale=0
+            i.do(Delay(delay)+
+                Accelerate(ScaleTo(1.3,duration=0.3), 2)+
+                ScaleTo(1,duration=0.1))
+            delay += 0.2
+
+
+class AnimatedMenuItem(MenuItem):
+    def __init__(self, text, callback, delay = 2):
+        super(AnimatedMenuItem, self).__init__(text, callback)
+        self.scale = 0
+        self.do(Delay(delay)+ScaleTo(1.1,duration=0.2)+ScaleTo(1,duration=0.1))
+        
 
 class MainMenu(BrandedMenu):
     """Main menu for the game"""
@@ -75,6 +100,7 @@ class MainMenu(BrandedMenu):
 #        items.append(MenuItem('Scores', self.on_score))
         items.append(MenuItem('Story', self.on_story))
         items.append(MenuItem('Credits', self.on_credits))
+#        items.append(MenuItem('Editor', self.on_editor,delay = 1.2))
 #        items.append(MenuItem('Options', self.on_configure))
         items.append(MenuItem('Quit', self.on_quit))
         self.create_menu(items, zoom_in(1.4), zoom_out(), shake())
@@ -82,6 +108,9 @@ class MainMenu(BrandedMenu):
     def on_new_game(self):
         #director.push(game_scene)
         director.push(FadeTransition(intro_scene.get_scene(),duration = 0.4))
+
+    def on_editor(self):
+        director.push(FadeTransition(reader_scene.CreditsScene(),duration = 0.4))
 
     def on_credits(self):
         director.push(FadeTransition(reader_scene.CreditsScene(),duration = 0.4))
@@ -203,6 +232,7 @@ class BackgroundLayer(object):
 class MainMenuScene(Scene):
     def __init__(self):
         super(MainMenuScene, self).__init__()
+        self.add(DisableEscapeKeyLayer())
 
     def on_enter(self):
         sounds.set_music('music/intro.ogg')
@@ -211,6 +241,7 @@ class MainMenuScene(Scene):
 class PauseMenuScene(Scene):
     def __init__(self):
         super(PauseMenuScene, self).__init__()
+        self.add(DisableEscapeKeyLayer())
 
     def on_enter(self):
         sounds.stop_music()

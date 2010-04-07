@@ -1,21 +1,20 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 
-from cocos.scenes.transitions import FadeTransition
 import pyglet
 from cocos.sprite import Sprite
 from cocos.layer import Layer
 from cocos.scene import *
 from cocos.scenes.transitions import *
 from cocos.director import director
-import cocos
 import sounds
 import game_menu
 from game_map import GameMapScene
-import sys
+from blob_transitions import *
 
 current_level = 0
 max_level = 2
+
 
 class BilboardScene(Scene):
     def __init__(self):
@@ -25,29 +24,33 @@ class BilboardScene(Scene):
             self.sprite.x = self.sprite.width/2
             self.sprite.y = self.sprite.height/2
             self.add(self.sprite)
+        self.add(BilboardControlLayer())
+
 
 class GameOverScene(BilboardScene):
     image = 'bgs/game_over.jpg'
     def __init__(self):
         super(GameOverScene,self).__init__()
-        self.add(GameOverControlLayer())
         sounds.set_music('music/game_over.ogg')
 
 class GameWinScene(BilboardScene):
     image = 'bgs/ftw.jpg'
     def __init__(self):
         super(GameWinScene,self).__init__()
-        self.add(GameOverControlLayer())
         sounds.set_music('music/ftw.ogg')
         
-class GameOverControlLayer(Layer):
+class BilboardControlLayer(Layer):
     is_event_handler = True
 
     def __init__(self):
-        super(GameOverControlLayer,self).__init__()
+        super(BilboardControlLayer,self).__init__()
 
     def on_key_press(self, key, modifiers):
-        director.pop()
+        director.pop(blob_fade_transition)
+        return True
+
+    def on_mouse_press(self, x, y,  buttons, modifiers):
+        director.pop(blob_fade_transition)
 
 class GameInputLayer(Layer):
     is_event_handler = True
@@ -57,7 +60,7 @@ class GameInputLayer(Layer):
 
     def on_key_press(self, key, modifiers):
         if key == pyglet.window.key.ESCAPE:
-            director.push(FadeTransition(game_menu.pause_menu(),duration=0.3))
+            director.push(blob_fade_transition(game_menu.pause_menu()))
             return True
 
 def reset_levels():

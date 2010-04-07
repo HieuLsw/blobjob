@@ -1,8 +1,9 @@
 
 from cocos.text import Label
-from cocos.scene import Scene
 from game_scene import BilboardScene
 import data
+
+
 
 class ReaderScene(BilboardScene):
     image = "bgs/credits.jpg"

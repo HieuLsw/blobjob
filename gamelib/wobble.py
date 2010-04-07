@@ -197,8 +197,8 @@ class Wobble(Layer):
                 self.char.remove(self.sprite)
             self.sprite = self.animations[name]
             self.char.add(self.sprite)
-            self.sprite.opacity = 230
-            self.sprite.color = (100,255,100)
+            self.sprite.opacity = 210
+#            self.sprite.color = (255,0,0)
             self.sprite.x = 0
             self.sprite.y = 0
          
@@ -285,18 +285,26 @@ class Wobble(Layer):
         
 
     def jump_up(self):
-#        self.char.do(jump_up(self.end_jump))
-        self.char.do(MoveTo((self.char.x,self.grid_y_to_y(self.char_jump_block()-2)),duration=0.2) + CallFunc(self.end_jump))
+        jump_to_y = self.grid_y_to_y(self.char_jump_block() - 2)
+        self.jump_to(jump_to_y)
         self.facing = "down"
         sounds.play("sfx/jump.ogg")
-#        print self.char_to_grid()
 
     def jump_down(self):
-#        self.char.do(jump_down(self.end_jump))
-        self.char.do(MoveTo((self.char.x,self.grid_y_to_y(self.char_jump_block()+1)),duration=0.2) + CallFunc(self.end_jump))
+        jump_to_y = self.grid_y_to_y(self.char_jump_block()+1)
+        self.jump_to(jump_to_y)
         self.facing = "up"
         sounds.play("sfx/jump.ogg")
-#        print self.char_to_grid()
+
+    def jump_to(self,jump_to_y):
+        jump_from_y = self.char.y
+        jump_duration = abs(jump_to_y - jump_from_y) / 600
+        if(jump_duration <= 0.05):
+            jump_duration = 0.05
+        if(jump_duration > 0.5):
+            jump_duration = 0.5
+
+        self.char.do(MoveTo((self.char.x, jump_to_y), duration=jump_duration) + CallFunc(self.end_jump))
 
     def end_jump(self):
         self.status = 'still'
