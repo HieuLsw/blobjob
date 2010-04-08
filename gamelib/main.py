@@ -10,9 +10,6 @@ package.
 # cocos2d
 # http://cocos2d.org
 #
-# Particle Engine done by Phil Hassey
-# http://www.imitationpickles.org
-#
 
 import sys
 import os
