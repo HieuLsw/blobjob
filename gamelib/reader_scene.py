@@ -1,6 +1,6 @@
 
 from cocos.text import Label
-from game_scene import BilboardScene
+from bilboard_scene import BilboardScene
 import data
 
 

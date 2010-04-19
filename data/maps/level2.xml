@@ -1,9 +1,4 @@
 <resource><requires file="tiles.xml" />
-<requires file="tiles.xml" />
-<requires file="tiles.xml" />
-<requires file="tiles.xml" />
-<requires file="tiles.xml" />
-<requires file="tiles.xml" />
 <rectmap id="level 2" origin="0,0,0" tile_size="50x50"><column><cell tile="block-04" />
 <cell tile="block-10" />
 <cell tile="block-10" />

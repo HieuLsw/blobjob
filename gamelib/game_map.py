@@ -29,20 +29,16 @@ class GameDecoratorLayer(Layer):
         self.add(sprite)
         
 
-class GameMapScene(Scene):
+class GameMapBaseScene(Scene):
     def __init__(self,level_xml,speed=30, contents=None):
-        super(GameMapScene, self).__init__(contents)
+        super(GameMapBaseScene, self).__init__(contents)
 
-#        self.remove(self.manager)
         self.manager = ScrollingManager()
         self.add(self.manager)
-#        print pyglet.resource.path
         level = tiles.load(level_xml)
-#        print level
         mz = 0
         mx = 0
         for id, layer in level.find(tiles.MapLayer):
-#            print layer
             self.manager.add(layer, z=layer.origin_z)
             mz = max(layer.origin_z, mz)
             mx = max(layer.px_width, mx)
@@ -50,8 +46,11 @@ class GameMapScene(Scene):
         self.level = level
         self.px_width = mx
 
+class GameMapScene(GameMapBaseScene):
+    def __init__(self,level_xml,speed=30, contents=None):
+        super(GameMapScene, self).__init__(level_xml,speed,contents)
         self.add(GameControlLayer(self.manager, 80))
-        self.wobble = Wobble((5,7),level)
+        self.wobble = Wobble((5,7), self.level)
         self.add(self.wobble)
         self.wobble.x=0
         self.wobble.y=0
