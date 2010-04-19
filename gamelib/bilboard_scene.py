@@ -1,5 +1,8 @@
 from cocos.scene import Scene
 from cocos.layer import Layer
+from cocos.sprite import Sprite
+from cocos.director import director
+from blob_transitions import *
 
 class BilboardScene(Scene):
     def __init__(self):
