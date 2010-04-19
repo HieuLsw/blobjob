@@ -16,6 +16,7 @@ if len(sys.argv) > 1 and sys.argv[1] == '--nosound':
 # 
 #pyglet.options["audio"] = ('openal',)
 if(enable_sound):
+    pyglet.options['audio'] = ('pulse', 'openal', 'directsound',)
     music_player = pyglet.media.Player()
 
     current_music = None
