@@ -275,7 +275,7 @@ class Wobble(Layer):
     def die(self):
         if self.status != "death":
             self.status = 'death'
-            sounds.play("sfx/hurt.ogg")
+            sounds.play("sfx/hurt.wav")
     #        self.set_animation()
 
             self.char.remove(self.sprite)
@@ -288,13 +288,13 @@ class Wobble(Layer):
         jump_to_y = self.grid_y_to_y(self.char_jump_block() - 2)
         self.jump_to(jump_to_y)
         self.facing = "down"
-        sounds.play("sfx/jump.ogg")
+        sounds.play("sfx/jump.wav")
 
     def jump_down(self):
         jump_to_y = self.grid_y_to_y(self.char_jump_block()+1)
         self.jump_to(jump_to_y)
         self.facing = "up"
-        sounds.play("sfx/jump.ogg")
+        sounds.play("sfx/jump.wav")
 
     def jump_to(self,jump_to_y):
         jump_from_y = self.char.y
