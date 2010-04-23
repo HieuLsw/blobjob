@@ -19,7 +19,6 @@ import pyglet
 import game_scene
 lives = 1
 
-
 class GameDecoratorLayer(Layer):
     def __init__(self):
         super(GameDecoratorLayer,self).__init__()
@@ -63,14 +62,23 @@ class GameMapScene(GameMapBaseScene):
         #This line fixes the grid added by the MapLayer
         self.manager.do(Waves(waves=1,amplitude=0))
         
-    def char_die(self):
-        global lives
-        if(lives>0):
-            director.replace(FadeTransition(game_scene.cur_level(),duration=1))
-            lives -= lives
-        else:
-            director.replace(FadeTransition(game_scene.GameOverScene(),duration=1))
-            lives = 1
+def char_die(self):
+    global lives
+    if (lives>=0):
+        director.replace(FadeTransition(game_scene.current_level(),duration=1)
+    else:
+        print "No revive"
+        director.replace(FadeTransition(game_scene.GameOverScene(),duration=1))
+
+def char_revive():
+
+    global lives
+    lives -= lives
+    print "[DEBUG][char_revive]revive, quedan " + str(lives) + " vidas"
+
+    print "Revive"
+
+
 
 
 class GameControlLayer(Layer):

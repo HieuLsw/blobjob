@@ -42,7 +42,7 @@ class GameInputLayer(Layer):
 def reset_levels():
     global current_level
     current_level = 0
-
+    
 def next_level():
     global current_level
     global max_level
@@ -56,7 +56,23 @@ def next_level():
         scene = GameWinScene()
     return scene
 
+def cur_level():
+    global current_level
+
+
+    controls = GameInputLayer()
+    scene = GameMapScene('level'+str(current_level)+'.xml', speed=50, contents=controls)
+    director.window.set_caption("Level "+str(current_level))
+    
+    return scene
+
 
 def first_level():
     reset_levels()
     return next_level()
+
+
+
+def get_current_level():
+    global current_level
+    return current_level
