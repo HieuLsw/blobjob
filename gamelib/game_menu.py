@@ -61,7 +61,7 @@ class BrandedMenu(Menu):
         
         self.menu_valign = BOTTOM
         self.menu_halign = RIGHT
-        self.select_sound = Sfx('sfx/menu_change.ogg')
+        self.select_sound = Sfx('sfx/menu_change.wav')
 
     def on_key_press(self,key,modifiers):
         if(key == pyglet.window.key.ESCAPE ):
