@@ -21,6 +21,7 @@ import game_scene
 
 #Character extra lives
 #shoudl be an attribute of the character class
+char_initial_lives = 2
 lives = 2
 
 
@@ -56,6 +57,7 @@ class OSDLayer(Layer):
 
     def update(self):
         global lives
+        print "Lives are now: "+str(lives)
         self.label.element.text = 'x '+str(lives)
 
 class GameDecoratorLayer(Layer):
@@ -107,12 +109,12 @@ class GameMapScene(GameMapBaseScene):
     def char_die(self):
         global lives
         if(lives>0):
-            director.replace(FadeTransition(game_scene.cur_level(),duration=1))
             lives -= 1
             self.osd.update()
+            director.replace(FadeTransition(game_scene.cur_level(),duration=1))
         else:
             director.replace(FadeTransition(game_scene.GameOverScene(),duration=1))
-            lives = 1
+            lives = char_initial_lives
 
 
 class GameControlLayer(Layer):
